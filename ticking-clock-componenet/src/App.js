@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Clock from './Clock';
 import './App.css';
 
 class App extends Component {
   render() {
+    let date= new Date().toLocaleString();
+    console.log(date);
     return (
       <div className="App">
         <header className="App-header">
@@ -19,7 +22,11 @@ class App extends Component {
           >
             Learn React
           </a>
+          <div>
+          <Clock currentDate={date} />
+        </div>
         </header>
+        
       </div>
     );
   }
