@@ -13,11 +13,32 @@ var PRODUCTS = {
 };
 
 class Products extends Component {
+  constructor(props){
+    super(props);
+    this.handleFilter = this.handleFilter.bind(this);
+    this.state = {
+      products: PRODUCTS,
+      filterText: '',
+      inStockOnly: false,
+    }
+  }
+
+  handleFilter(filterInput){this.setState(filterInput)}
+
+
   render() {
     return (
       <div>
-        <Filters/>
-        <ProductTable products={PRODUCTS}/>
+        <Filters
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+          onFilter = {this.handleFilter}
+        />
+        <ProductTable 
+          products={PRODUCTS}
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+          />
         <ProductForm/>
       </div>
     )
